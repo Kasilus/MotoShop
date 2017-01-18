@@ -1,0 +1,49 @@
+@import url(reset.css);
+
+body{
+	font-family:Myriad Pro;
+	background-image:url('../images/layer.png');
+}
+
+.header{
+	padding-top:32px;
+	padding-bottom:24px;
+	text-align:center;
+}
+
+.auth{
+	text-align:center;
+	
+
+	line-height:1.5;
+	margin:0 auto;
+}
+
+.auth-form-head h1{
+	font-size:42px;
+	display:block;
+}
+
+.auth-form-body{
+	text-align: left;
+	border:1px solid;
+	border-color:black;
+	border-radius:5px;
+	width:308px;
+	height:235px;
+	margin:0 auto;
+}
+
+.form-control-block{
+	display:block;
+	
+}
+
+.button-send {
+  margin-top:13px;
+}
+
+.button-send:hover {
+
+}
+

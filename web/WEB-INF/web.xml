@@ -6,7 +6,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>test.jsp</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
     <resource-ref>
         <res-ref-name>jdbc/Library</res-ref-name>
