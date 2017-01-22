@@ -1,8 +1,8 @@
-@import url(reset.css);
+@import url("#{resource['css:reset.css']}");
 
 body{
 	font-family:Myriad Pro;
-	background-image:url('../images/layer.png');
+	background-image:url("#{resource['images/layer.png']}");
 }
 
 
@@ -33,7 +33,7 @@ div.search{
  height:37px;
  border:2px solid #6397aa;
  background-color:white;
- background-image:url("../images/search.png");
+ background-image:url("#{resource['images/search.png']}");
  background-repeat:no-repeat;
  background-position:97% 50%;
  border-radius:4px;

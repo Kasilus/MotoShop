@@ -1,8 +1,8 @@
-@import url(reset.css);
+@import url("#{resource['css:reset.css']}");
 
 body{
 	font-family:Myriad Pro;
-	background-image:url('../images/layer.png');
+	background-image:url("#{resource['images/layer.png']}");
 }
 
 .header{

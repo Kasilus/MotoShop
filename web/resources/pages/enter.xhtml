@@ -2,18 +2,21 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<head lang="ru">
+        
+    
+<h:head lang="ru">
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="../css/enter.css" />
+	<h:outputStylesheet library='css' name='enter.css' />
 	<title>Main</title>
-</head>
+</h:head>
 
-<body>
+<h:body>
 	
 	<div class = "header">
-		<img src="../images/logo.png" alt="lion" />
+            <h:graphicImage library="images" name="logo.png" alt="lion" />
 	</div>
 	
 	<div class ="auth">
@@ -26,14 +29,15 @@
 		
 			
 			<div class = "auth-form-body">
+                            <h:form>
 				<label>Имя пользователя</label>
-				<input class="form-control-block" type="text" name="login" />
+                                <h:inputText styleClass="form-control-block" id="login" />
 				<label>Пароль</label>
-				<input class="form-control-block" type="text" name="password" />
-				<input class="button-send" type="submit" value="Отправить" />
+                                <h:inputSecret styleClass="form-control-block" id="password" />
+                            </h:form>
 			</div>
 		</form>
 	</div>
 
-</body>
+</h:body>
 </html>

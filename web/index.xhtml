@@ -1,27 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8' ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<head lang="ru">
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+<h:head>
+	
+    <h:outputStylesheet library="css" name="style.css" />
 	<title>Main</title>
-</head>
+</h:head>
 
 
-<body>
+<h:body>
 	<div class="wrapper">
 		<div class="header">
 			<div class="top-header">
 				<div class="logo">
-					<a href="index.html"><img src="resources/images/logo.png" alt="lion" /></a>
+                                    <a href="index.html"><h:graphicImage library="images" name="logo.png" alt="Logo" /></a>
 				</div>
 				<div class="search">			
-						<form>
-							<input type="text" name="search" method="POST" placeholder="Quick Search" />
-						</form>
+						<h:form>
+                                                    <h:inputText id="search" value= "Quick Search" />
+						</h:form>
 				</div>
 				<div class="top-info">
 					Телефон: <span class="phone">+38 (050) 804-00-007</span>
@@ -52,7 +53,7 @@
 		</div>
 		<div id="content">
 			<div class="new-content">
-				<img src="resources/images/top-news.PNG" />
+                            <h:graphicImage library="images" name="top-news.PNG" />
 			</div>
 			<div class="main-content">
 				<div class="wrapper">
@@ -75,37 +76,37 @@
 				<div class="part-content">
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+                                                    <h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 					</div>
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 					</div>
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 					</div>
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 					</div>
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 					</div>
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 					</div>
@@ -121,26 +122,26 @@
 					<h2>New items.</h2>
 					<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>		
 					</div>					
 				
 				<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 				</div>			
 				<div class="part-content-cell">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 				</div>
 				<div class="part-content-cell" id="frick">
 						<div class="image">
-							<img src="resources/images/camera.png" alt="camera" />
+							<h:graphicImage library="images" name="camera.png" alt="camera" />
 						</div>	
 							<div class="desk"><span class="stock">in stock</span>Canon 500mm F4.0 L IS II EF AF USM Lens</div>
 				</div>
@@ -162,16 +163,16 @@
 		<footer>
 			<div class="sponsors">
 				<div class="sponsors-logos">
-					<img src="resources/images/sponsor-logo-1.png" />
+                                    <h:graphicImage library="images" name="sponsor-logo-1.png" />
 				</div>
 				<div class="sponsors-logos">
-					<img src="resources/images/sponsor-logo-2.png" />
+					<h:graphicImage library="images" name="sponsor-logo-2.png" />
 				</div>
 				<div class="sponsors-logos">
-					<img src="resources/images/sponsor-logo-3.png" />
+					<h:graphicImage library="images" name="sponsor-logo-3.png" />
 				</div>
 				<div class="sponsors-logos" id="last">
-					<img src="resources/images/sponsor-logo-4.png" />
+					<h:graphicImage library="images" name="sponsor-logo-4.png" />
 				</div>
 			</div>
 			<p>Copyright 2014 &copy; Lion. All rights reserved.</p>
@@ -185,7 +186,7 @@
 					</ul>	
 			</div>
 			<div class="share">
-				<img src="resources/images/share.png" usemap="#share" />
+                            <h:graphicImage library="images" name ="share.png" usemap="#share" />
 				<map name="share">
 					<area shape="rect" coords="0,0,42,39" href="http://google.com" />
 					<area shape="rect" coords="49,0,91,39" href="http://yandex.com" />
@@ -194,5 +195,5 @@
 			</div>
 		</footer>
 	</div>
-</body>
+</h:body>
 </html>
