@@ -7,10 +7,10 @@
 
         
     
-<h:head lang="ru">
+<h:head>
 	<meta charset="UTF-8" />
 	<h:outputStylesheet library='css' name='enter.css' />
-	<title>Main</title>
+        <title>#{msg.enter_title}</title>
 </h:head>
 
 <h:body>
@@ -23,16 +23,16 @@
 	
 	<form align="center">
 		<div class = "auth-form-head">
-				<h1>Вход в мотомагазин</h1>
+                    <h1>#{msg.enter_to_motoshop}</h1>
 			</div>
 	
 		
 			
 			<div class = "auth-form-body">
                             <h:form>
-				<label>Имя пользователя</label>
+                                <label>#{msg.username}</label>
                                 <h:inputText styleClass="form-control-block" id="login" />
-				<label>Пароль</label>
+                                <label>#{msg.password}</label>
                                 <h:inputSecret styleClass="form-control-block" id="password" />
                             </h:form>
 			</div>
