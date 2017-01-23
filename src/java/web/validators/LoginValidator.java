@@ -19,6 +19,8 @@ public class LoginValidator implements Validator {
 
         String newValue = value.toString();
 
+        System.out.println(newValue);
+        
         try {
             if (newValue.length() < 5) {
                 throw new IllegalArgumentException(bundle.getString("username_length_error"));
