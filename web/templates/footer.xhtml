@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+
+        <ui:composition>
+
+            <div class="sponsors">
+                <div class="sponsors-logos">
+                    <h:graphicImage library="images" name="sponsor-logo-1.png" />
+                </div>
+                <div class="sponsors-logos">
+                    <h:graphicImage library="images" name="sponsor-logo-2.png" />
+                </div>
+                <div class="sponsors-logos">
+                    <h:graphicImage library="images" name="sponsor-logo-3.png" />
+                </div>
+                <div class="sponsors-logos" id="last">
+                    <h:graphicImage library="images" name="sponsor-logo-4.png" />
+                </div>
+            </div>
+            <p>Copyright 2014 &copy; Lion. All rights reserved.</p>
+            <div class="low-foot">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Store Policies</a></li>
+                    <li><a href="#">Driving Directions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>	
+            </div>
+            <div class="share">
+                <h:graphicImage library="images" name ="share.png" usemap="#share" />
+                <map name="share">
+                    <area shape="rect" coords="0,0,42,39" href="http://google.com" />
+                    <area shape="rect" coords="49,0,91,39" href="http://yandex.com" />
+                    <area shape="rect" coords="97,0,140,39" href="http://gmail.com" />
+                </map>
+            </div>
+
+        </ui:composition>
+
+    </h:body>
+</html>

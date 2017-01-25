@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+
+        <ui:composition>
+
+            <div class="wrapper">
+
+                <div class="header">
+                    <ui:insert name="header">
+                        <ui:include src="/templates/header.xhtml" />
+                    </ui:insert>
+                </div>
+
+                <div id="content">
+
+                    <div class="new-content">
+                        <ui:insert name="content_new">
+                            <ui:include src="/templates/content_new.xhtml" />
+                        </ui:insert>
+                    </div>
+
+                    <div class="main-content">
+                        <div class="wrapper">
+                            <nav class="main-nav">
+                                <ui:insert name="left_menu">
+                                    <ui:include src="/templates/left_menu.xhtml" />
+                                </ui:insert>
+                            </nav>
+
+                            <div class="part-content">
+                                <ui:insert name="content_main">
+                                    <ui:include src="/templates/content_main.xhtml" />
+                                </ui:insert>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="low-content">
+                        <div class="new-items">
+                            <ui:insert name="content_low">
+                                <ui:include src="/templates/content_low.xhtml" />
+                            </ui:insert>
+                        </div>
+                        <ui:insert>
+                            <ui:include src="/templates/content_spec_offers.xhtml" />
+                        </ui:insert>
+                    </div>
+
+
+                </div>
+
+                <footer>
+                    <ui:insert name="footer">
+                        <ui:include src="/templates/footer.xhtml" />
+                    </ui:insert>
+                </footer>
+
+            </div>    
+        </ui:composition>
+
+    </h:body>
+</html>
