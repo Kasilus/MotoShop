@@ -219,6 +219,11 @@ div.search{
     margin-right:0;
 }
 
+.offers{
+    height:210px;
+    width: 100%;
+}
+
 .special-offer{
 	margin-top:43px;
 	float:left;

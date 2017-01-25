@@ -6,7 +6,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Title</title>
         <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
@@ -52,7 +52,7 @@
                                 <ui:include src="/templates/content_low.xhtml" />
                             </ui:insert>
                         </div>
-                        <ui:insert>
+                        <ui:insert name="content_spec_offers">
                             <ui:include src="/templates/content_spec_offers.xhtml" />
                         </ui:insert>
                     </div>
