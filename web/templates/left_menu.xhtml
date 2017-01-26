@@ -6,7 +6,6 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>TODO supply a title</title>
         <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
@@ -15,16 +14,11 @@
 
             <h1>Featured.</h1>
             <ul>
-                <li><a href="#">Cameras</a></li>
-                <li><a href="#">Accessories</a></li>
-                <li><a href="#">Bags/Cases</a></li>
-                <li><a href="#">Batteries/Power</a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Filters</a></li>
-                <li><a href="#">Lighting/studio</a></li>
-                <li><a href="#">Printers</a></li>
-                <li><a href="#">Tripods</a></li>
-                <li><a href="#">Video</a></li>
+                <ui:repeat value="#{sections.sectionList}" var="section">
+                    <li>
+                    #{section.name}
+                    </li>
+                </ui:repeat>
             </ul>
 
         </ui:composition>

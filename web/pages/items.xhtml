@@ -7,14 +7,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-	
-    <h:outputStylesheet library="css" name="style.css" />
-	<title>Main</title>
 </h:head>
     
     <h:body>
         <ui:composition template="/templates/items_template.xhtml">
             
+            <ui:define name="title">
+                #{msg.items_title}
+            </ui:define>
             
         </ui:composition>
     </h:body>

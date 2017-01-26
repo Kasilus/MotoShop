@@ -1,4 +1,3 @@
-
 package web.controllers;
 
 import javax.faces.bean.ManagedBean;
