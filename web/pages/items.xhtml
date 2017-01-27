@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<h:head>
-    <title>Faces</title>
-</h:head>
-    
+    <h:head>
+        <title>Faces</title>
+    </h:head>
+
     <h:body>
         <ui:composition template="/templates/items_template.xhtml">
-            
+
             <ui:define name="title">
                 #{msg.items_title}
             </ui:define>
-            
+
             <ui:define name="content_main">
                 #{param.section_id}
-                
+
+
                 <ui:repeat value="#{searchController.currentItemList}" var="item">
-                    #{item.name}
+                    <div class="part-content-cell">
+                        <div class="image">
+                            <h:graphicImage value="/ShowImage?id=#{item.id}" height="136" width="149" />
+                        </div>
+                        <div class="desk"><span class="stock">#{msg.in_stock}</span>#{item.name}</div>
+                    </div>
                 </ui:repeat>
-                
+
             </ui:define>
-            
+
         </ui:composition>
     </h:body>
-    
+
 </html>

@@ -13,7 +13,7 @@ import web.db.Database;
 @ManagedBean
 @SessionScoped
 public class SearchController {
-    
+
     private String searchString;
     ArrayList<Item> currentItemList;
 
@@ -32,10 +32,9 @@ public class SearchController {
     public String getSearchString() {
         return searchString;
     }
-    
 
     private void fillItemsBySql(String sql) {
-        
+
         currentItemList = new ArrayList<>();
 
         Statement statement = null;
@@ -71,9 +70,43 @@ public class SearchController {
 
         }
     }
-    
-    public void getByPartOfWord(){
-            fillItemsBySql("SELECT * FROM motoshop.item "
+
+    public void getByPartOfWord() {
+        fillItemsBySql("SELECT * FROM motoshop.item "
                 + "WHERE name LIKE '%" + searchString + "%'");
+    }
+
+    public byte[] getImage(int id) {
+        Statement statement = null;
+        ResultSet rs = null;;
+        Connection conn = null;
+
+        byte[] image = null;
+
+        try {
+            conn = Database.getConnection();
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT image FROM motoshop.item where id=" + id);
+            while (rs.next()) {
+                image = rs.getBytes("image");
+            }
+        } catch (SQLException ex) {
+
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+
+            }
+        }
+        return image;
     }
 }
