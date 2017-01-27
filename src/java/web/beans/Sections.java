@@ -16,7 +16,7 @@ import web.db.Database;
 @SessionScoped
 public class Sections {
 
-    private ArrayList<Section> sectionList;
+    private ArrayList<Section> sectionList = new ArrayList<>();
 
     private ArrayList<Section> getSections() {
         Statement statement = null;
@@ -26,7 +26,7 @@ public class Sections {
         try {
             conn = Database.getConnection();
             statement = conn.createStatement();
-            rs = statement.executeQuery("select * from section");
+            rs = statement.executeQuery("SELECT * FROM motoshop.section");
             while (rs.next()) {
                 Section section = new Section();
                 section.setId(rs.getInt("id"));

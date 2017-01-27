@@ -12,11 +12,13 @@
 
         <ui:composition>
 
-            <h1>Featured.</h1>
+            <h1>#{msg.sections}.</h1>
             <ul>
                 <ui:repeat value="#{sections.sectionList}" var="section">
                     <li>
-                    #{section.name}
+                        <h:link onclick="#">
+                            #{section.name}
+                        </h:link>
                     </li>
                 </ui:repeat>
             </ul>
