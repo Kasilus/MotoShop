@@ -4,8 +4,10 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <title>Faces Servlet</title>
         <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
@@ -16,8 +18,8 @@
             <ul>
                 <ui:repeat value="#{sections.sectionList}" var="section">
                     <li>
-                        <h:link onclick="#">
-                            #{section.name}
+                        <h:link value="#{section.name}">
+                            <f:param name="section_id" value="#{section.id}" />
                         </h:link>
                     </li>
                 </ui:repeat>

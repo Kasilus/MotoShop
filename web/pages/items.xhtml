@@ -7,6 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
+    <title>Faces</title>
 </h:head>
     
     <h:body>
@@ -14,6 +15,10 @@
             
             <ui:define name="title">
                 #{msg.items_title}
+            </ui:define>
+            
+            <ui:define name="content_main">
+                #{param.section_id}
             </ui:define>
             
         </ui:composition>
