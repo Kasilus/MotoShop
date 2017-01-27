@@ -11,4 +11,11 @@
         </resource-bundle>
         
     </application>
+    <navigation-rule>
+        <from-view-id>/pages/items.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>exit</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

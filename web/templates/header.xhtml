@@ -23,12 +23,14 @@
                     </h:form>
                 </div>
                 <div class="top-info">
+                    <h:form>
                     #{msg.phone}: <span class="phone">+38 (050) 804-00-007</span>
                     <ul>
-                        <li><a href="#">#{msg.enter_title}</a></li>
                         <li><a href="#">#{msg.personal_area}</a></li>
                         <li><a href="#">#{msg.basket}</a></li>
+                        <li><h:commandLink action="#{loginController.exit()}" value="#{msg.exit}" /></li>
                     </ul>
+                    </h:form>
                 </div>		
             </div>
             <nav>
