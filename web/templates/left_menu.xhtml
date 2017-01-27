@@ -16,7 +16,7 @@
 
             <h1>#{msg.sections}.</h1>
             <ul>
-                <ui:repeat value="#{sections.sectionList}" var="section">
+                <ui:repeat value="#{sectionController.sectionList}" var="section">
                     <li>
                         <h:link value="#{section.name}">
                             <f:param name="section_id" value="#{section.id}" />
