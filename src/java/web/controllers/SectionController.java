@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import web.beans.Category;
 import web.beans.Section;
 import web.db.Database;
 
@@ -58,6 +59,45 @@ public class SectionController {
             }
 
         }
+    }
+   // Not finished
+    private ArrayList<Category> getCategoriesBySectionId(int id){
+        
+        Statement statement = null;
+        ResultSet rs = null;;
+        Connection conn = null;
+
+        try {
+            conn = Database.getConnection();
+            statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT * FROM motoshop.category where");
+            while (rs.next()) {
+                Section section = new Section();
+                section.setId(rs.getInt("id"));
+                section.setName(rs.getString("name"));
+                sectionList.add(section);
+            }
+        } catch (SQLException ex) {
+            
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                
+            }
+
+        }
+        
+        return null;
+        
     }
 
 

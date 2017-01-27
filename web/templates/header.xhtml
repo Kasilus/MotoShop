@@ -4,7 +4,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Faces Servlet</title>
         <h:outputStylesheet library="css" name="style.css" />
@@ -19,7 +20,8 @@
                 </div>
                 <div class="search">			
                     <h:form>
-                        <h:inputText id="search" value= "#{msg.quick_search}" />
+                        <h:inputText value= "#{searchController.searchString}" />
+                        <h:commandButton value="#{msg.search}" action="#{searchController.getByPartOfWord()}" />
                     </h:form>
                 </div>
                 <div class="top-info">

@@ -19,6 +19,11 @@
             
             <ui:define name="content_main">
                 #{param.section_id}
+                
+                <ui:repeat value="#{searchController.currentItemList}" var="item">
+                    #{item.name}
+                </ui:repeat>
+                
             </ui:define>
             
         </ui:composition>
