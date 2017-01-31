@@ -56,7 +56,6 @@ public class SearchController {
     private void fillItemsBySql(String sql) {
 
         currentSql = sql;
-
         StringBuilder sb = new StringBuilder(sql);
 
         currentItemList = new ArrayList<>();
@@ -69,22 +68,18 @@ public class SearchController {
             conn = Database.getConnection();
             statement = conn.createStatement();
 
-            rs = statement.executeQuery(sql);
+            // Do query to db to know how many items was found by search
+            rs = statement.executeQuery(currentSql);
             rs.last();
             itemsBySearch = rs.getRow();
 
             fillPagesNumbers(itemsBySearch, itemsOnPage);
 
             if (itemsBySearch > itemsOnPage) {
-                System.out.println(selectedPageNumber);
                 sb.append(" LIMIT ").append((selectedPageNumber - 1) * itemsOnPage).append(",").append(itemsOnPage);
-
             }
 
-            System.out.println(sb.toString());
-
             rs = statement.executeQuery(sb.toString());
-
             while (rs.next()) {
                 Item item = new Item();
                 item.setId(rs.getInt("id"));
@@ -112,6 +107,7 @@ public class SearchController {
     }
 
     public void getByPartOfWord() {
+        selectedPageNumber = 1;
         fillItemsBySql("SELECT * FROM motoshop.item "
                 + "WHERE name LIKE '%" + searchString + "%'");
     }
