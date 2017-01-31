@@ -117,7 +117,7 @@ div.search{
 }
 
 .main-nav{
-	float:left;
+	display:inline-block;
 }
 
 .main-nav h1{
@@ -151,7 +151,7 @@ div.search{
 }
 
 .part-content-cell{
-	float:right;
+	float:left;
 	width:230px;
 	height:290px;
 	margin-left:30px;
