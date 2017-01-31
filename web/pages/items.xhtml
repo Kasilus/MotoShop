@@ -13,15 +13,18 @@
 
     <h:body>
         <ui:composition template="/templates/items_template.xhtml">
+            
 
             <ui:define name="title">
                 #{msg.items_title}
             </ui:define>
+            
 
             <ui:define name="content_main">
                 #{param.section_id}
-
-                #{msg.items_in_general}:#{searchController.itemsBySearch}
+                
+                
+                <p>#{msg.items_in_general} : #{searchController.itemsBySearch}</p>
 
                 <ui:repeat value="#{searchController.currentItemList}" var="item">
                     <div class="part-content-cell">
@@ -32,20 +35,23 @@
                     </div>
                 </ui:repeat>
                 
-              
-                <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}">
-                    
-                    <ui:repeat value="#{searchController.pagesNumbered}" var="pageNumber">
-                        <h:commandLink action="#{searchController.selectPage()}" value="#{pageNumber}">
-                            <f:param name="page_number" value="#{pageNumber}" />
-                        </h:commandLink>    
-                    </ui:repeat>
-                
-                </h:form>
 
+                <div class ="pager">
+                    <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}">
+
+                        <ui:repeat value="#{searchController.pagesNumbered}" var="pageNumber">
+                            <h:commandLink action="#{searchController.selectPage()}" value="#{pageNumber}" styleClass="#{pageNumber == searchController.selectedPageNumber?'selected_page':''}">
+                                <f:param name="page_number" value="#{pageNumber}" />
+                            </h:commandLink>    
+                        </ui:repeat>
+
+                    </h:form>
+                </div>
+
+                
             </ui:define>
 
+            
         </ui:composition>
     </h:body>
-
 </html>

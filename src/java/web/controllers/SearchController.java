@@ -16,27 +16,22 @@ import web.db.Database;
 @SessionScoped
 public class SearchController {
 
-    private String searchString;
-    ArrayList<Item> currentItemList;
-    private int itemsBySearch;
-    private int itemsOnPage = 6;
+    private String searchString; // String, which contains last search from user
+    ArrayList<Item> currentItemList; // List with items, which were taken from db by last query
+    private String currentSql; // Last query
+    private int itemsBySearch; // How many items are relevant to last search (searchString)
+    private int itemsOnPage = 6; // Count of items, displayed on every page
+    private int selectedPageNumber = 1; //The number of page, which you view right now
     ArrayList<Integer> pagesNumbered = new ArrayList<>();
 
-    private int selectedPageNumber = 1;
-    private String currentSql;
-
-    public int getItemsBySearch() {
-        return itemsBySearch;
+    public String getSearchString() {
+        return searchString;
     }
-
-    public int getItemsOnPage() {
-        return itemsOnPage;
+    
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
     }
-
-    public ArrayList<Integer> getPagesNumbered() {
-        return pagesNumbered;
-    }
-
+    
     public ArrayList<Item> getCurrentItemList() {
         return currentItemList;
     }
@@ -44,15 +39,28 @@ public class SearchController {
     public void setCurrentItemList(ArrayList<Item> currentItemList) {
         this.currentItemList = currentItemList;
     }
-
-    public void setSearchString(String searchString) {
-        this.searchString = searchString;
+    
+    public int getItemsBySearch() {
+        return itemsBySearch;
     }
 
-    public String getSearchString() {
-        return searchString;
+    public int getItemsOnPage() {
+        return itemsOnPage;
+    }
+    
+    public int getSelectedPageNumber(){
+        return selectedPageNumber;
     }
 
+    public ArrayList<Integer> getPagesNumbered() {
+        return pagesNumbered;
+    }
+
+    
+    /*
+     * Form new list of items (currentItemList)
+     * by the last query. Maintan page by page
+     */
     private void fillItemsBySql(String sql) {
 
         currentSql = sql;
@@ -106,12 +114,22 @@ public class SearchController {
         }
     }
 
+    
+    /*
+     * Form sql query to search items in db
+     * by part of word (searchString)
+     */
     public void getByPartOfWord() {
         selectedPageNumber = 1;
         fillItemsBySql("SELECT * FROM motoshop.item "
                 + "WHERE name LIKE '%" + searchString + "%'");
     }
 
+    
+    /*
+     * Count and form list of numbers
+     * of pages to maintain page by page
+     */
     private void fillPagesNumbers(int items, int itemsOnPage) {
         int pages = (int) Math.ceil((double) items / itemsOnPage);
 
@@ -121,12 +139,21 @@ public class SearchController {
         }
     }
 
+    /*
+     * Specify selected page number 
+     * by parameter "page_number"
+     */
     public void selectPage() {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedPageNumber = Integer.parseInt(params.get("page_number"));
         fillItemsBySql(currentSql);
     }
 
+    /*
+     * Return byte presentation of image from db
+     * This method uses to display image for each item
+     * by servlet ShowImage
+     */
     public byte[] getImage(int id) {
         Statement statement = null;
         ResultSet rs = null;;

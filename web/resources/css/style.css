@@ -306,3 +306,7 @@ footer p{
 	color:#325f70;
 	font-size:14px;
 }
+
+.pager .selected_page{
+    color: red;
+}

@@ -3,14 +3,14 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="templates/content_low.xhtml" x="711" y="196" zoom="true"/>
-        <Node id="index.xhtml" x="227" y="75" zoom="false"/>
-        <Node id="templates/content_new.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="templates/content_new.xhtml" x="716" y="106" zoom="true"/>
         <Node id="templates/content_main.xhtml" x="712" y="168" zoom="true"/>
-        <Node id="templates/left_menu.xhtml" x="712" y="141" zoom="true"/>
-        <Node id="templates/items_template.xhtml" x="714" y="69" zoom="true"/>
+        <Node id="index.xhtml" x="227" y="75" zoom="false"/>
+        <Node id="templates/left_menu.xhtml" x="714" y="138" zoom="true"/>
+        <Node id="templates/items_template.xhtml" x="720" y="4" zoom="true"/>
         <Node id="templates/content_spec_offers.xhtml" x="711" y="225" zoom="true"/>
-        <Node id="pages/items.xhtml" x="216" y="199" zoom="true"/>
-        <Node id="templates/header.xhtml" x="713" y="111" zoom="true"/>
+        <Node id="pages/items.xhtml" x="206" y="237" zoom="true"/>
+        <Node id="templates/header.xhtml" x="718" y="79" zoom="true"/>
         <Node id="templates/footer.xhtml" x="712" y="255" zoom="true"/>
         <Node id="test.jsp" x="54" y="427" zoom="true"/>
     </Scope>

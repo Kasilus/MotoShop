@@ -37,7 +37,7 @@
                                 </h:inputText>
                                 <label>#{msg.password}</label>
                                 <h:inputSecret styleClass="form-control-block" id="password" />
-                                <h:commandButton action="pages/items?faces-redirect=true" value="Войти" />
+                                <h:commandButton action="#{loginController.login()}" value="Войти" />
                                 <p><h:message for="login" styleClass="error" /></p>
                             </h:form>
 			</div>
