@@ -5,8 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import web.beans.Item;
 import web.db.Database;
 
@@ -16,6 +18,24 @@ public class SearchController {
 
     private String searchString;
     ArrayList<Item> currentItemList;
+    private int itemsBySearch;
+    private int itemsOnPage = 6;
+    ArrayList<Integer> pagesNumbered = new ArrayList<>();
+
+    private int selectedPageNumber = 1;
+    private String currentSql;
+
+    public int getItemsBySearch() {
+        return itemsBySearch;
+    }
+
+    public int getItemsOnPage() {
+        return itemsOnPage;
+    }
+
+    public ArrayList<Integer> getPagesNumbered() {
+        return pagesNumbered;
+    }
 
     public ArrayList<Item> getCurrentItemList() {
         return currentItemList;
@@ -35,16 +55,36 @@ public class SearchController {
 
     private void fillItemsBySql(String sql) {
 
+        currentSql = sql;
+
+        StringBuilder sb = new StringBuilder(sql);
+
         currentItemList = new ArrayList<>();
 
         Statement statement = null;
-        ResultSet rs = null;;
+        ResultSet rs = null;
         Connection conn = null;
 
         try {
             conn = Database.getConnection();
             statement = conn.createStatement();
+
             rs = statement.executeQuery(sql);
+            rs.last();
+            itemsBySearch = rs.getRow();
+
+            fillPagesNumbers(itemsBySearch, itemsOnPage);
+
+            if (itemsBySearch > itemsOnPage) {
+                System.out.println(selectedPageNumber);
+                sb.append(" LIMIT ").append((selectedPageNumber - 1) * itemsOnPage).append(",").append(itemsOnPage);
+
+            }
+
+            System.out.println(sb.toString());
+
+            rs = statement.executeQuery(sb.toString());
+
             while (rs.next()) {
                 Item item = new Item();
                 item.setId(rs.getInt("id"));
@@ -74,6 +114,21 @@ public class SearchController {
     public void getByPartOfWord() {
         fillItemsBySql("SELECT * FROM motoshop.item "
                 + "WHERE name LIKE '%" + searchString + "%'");
+    }
+
+    private void fillPagesNumbers(int items, int itemsOnPage) {
+        int pages = (int) Math.ceil((double) items / itemsOnPage);
+
+        pagesNumbered.clear();
+        for (int i = 1; i <= pages; i++) {
+            pagesNumbered.add(i);
+        }
+    }
+
+    public void selectPage() {
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        selectedPageNumber = Integer.parseInt(params.get("page_number"));
+        fillItemsBySql(currentSql);
     }
 
     public byte[] getImage(int id) {

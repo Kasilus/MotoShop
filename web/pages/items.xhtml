@@ -4,7 +4,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Faces</title>
@@ -20,6 +21,7 @@
             <ui:define name="content_main">
                 #{param.section_id}
 
+                #{msg.items_in_general}:#{searchController.itemsBySearch}
 
                 <ui:repeat value="#{searchController.currentItemList}" var="item">
                     <div class="part-content-cell">
@@ -29,6 +31,17 @@
                         <div class="desk"><span class="stock">#{msg.in_stock}</span>#{item.name}</div>
                     </div>
                 </ui:repeat>
+                
+              
+                <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}">
+                    
+                    <ui:repeat value="#{searchController.pagesNumbered}" var="pageNumber">
+                        <h:commandLink action="#{searchController.selectPage()}" value="#{pageNumber}">
+                            <f:param name="page_number" value="#{pageNumber}" />
+                        </h:commandLink>    
+                    </ui:repeat>
+                
+                </h:form>
 
             </ui:define>
 
