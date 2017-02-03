@@ -5,10 +5,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import web.beans.Category;
 import web.beans.Section;
 import web.db.Database;
@@ -18,6 +19,8 @@ import web.db.Database;
 public class SectionController {
 
     private ArrayList<Section> sectionList;
+    private ArrayList<Category> categoryList;
+    private int lastSelectedId;
 
     public SectionController() {
         getSections();
@@ -60,25 +63,39 @@ public class SectionController {
 
         }
     }
+
+    public ArrayList<Category> getCategoryList() {
+        return categoryList;
+    }
    // Not finished
-    private ArrayList<Category> getCategoriesBySectionId(int id){
+    public ArrayList<Category> getCategoriesBySectionId(){
+        
+        categoryList = new ArrayList<>();
         
         Statement statement = null;
         ResultSet rs = null;;
         Connection conn = null;
-
+        
+        Map<String,String> params =
+                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        
+        lastSelectedId = Integer.parseInt(params.get("section_id"));
+        System.out.println(lastSelectedId);
+        
         try {
             conn = Database.getConnection();
             statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT * FROM motoshop.category where");
+            rs = statement.executeQuery("select c.id, c.name "
+                    + "from motoshop.category c "
+                    + "where c.section_id = " + lastSelectedId);
             while (rs.next()) {
-                Section section = new Section();
-                section.setId(rs.getInt("id"));
-                section.setName(rs.getString("name"));
-                sectionList.add(section);
+                Category category = new Category();
+                category.setId(rs.getInt("id"));
+                category.setName(rs.getString("name"));
+                categoryList.add(category);
             }
         } catch (SQLException ex) {
-            
+           ex.printStackTrace();
         } finally {
             try {
                 if (statement != null) {

@@ -17,11 +17,13 @@
             <h1>#{msg.sections}.</h1>
             <ul>
                 <ui:repeat value="#{sectionController.sectionList}" var="section">
+                    <h:form>
                     <li>
-                        <h:link value="#{section.name}">
+                        <h:commandLink value="#{section.name}" action="#{sectionController.getCategoriesBySectionId()}">
                             <f:param name="section_id" value="#{section.id}" />
-                        </h:link>
+                        </h:commandLink>
                     </li>
+                    </h:form>    
                 </ui:repeat>
             </ul>
 

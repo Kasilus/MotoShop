@@ -4,7 +4,7 @@ function startTimer(){
 
 function displayNextImage(){
     x = (x === images.length - 1) ? 0 : x+1;
-    document.getElementById("img").src = "${pageContext.request.contextPath}" + images[x];
+    document.getElementById("img").src = "#{resource['" + images[x] +"']}" ;
 }
 
 var images = [], x=-1;

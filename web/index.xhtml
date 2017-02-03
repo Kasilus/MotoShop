@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        
-    
-<h:head>
-	<meta charset="UTF-8" />
-	<h:outputStylesheet library='css' name='enter.css' />
+
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <h:outputStylesheet library='css' name='enter.css' />
         <title>#{msg.enter_title}</title>
-</h:head>
+    </h:head>
 
-<h:body>
-	
-	<div class = "header">
+    <h:body>
+
+        <div class = "header">
             <h:graphicImage library="images" name="logo.png" alt="lion" />
-	</div>
-	
-	<div class ="auth">
-	
-                
-		<div class = "auth-form-head">
-                    <h1>#{msg.enter_to_motoshop}</h1>
-			</div>
-	
-		
-			
-			<div class = "auth-form-body">
-                            <h:form>
-                                <label>#{msg.username}</label>
-                                <h:inputText styleClass="form-control-block" id="login" value="#{user.username}" required="true" requiredMessage="#{msg.username_required}" >
-                                    <f:validator validatorId="web.validators.LoginValidator" />
-                                </h:inputText>
-                                <label>#{msg.password}</label>
-                                <h:inputSecret styleClass="form-control-block" id="password" />
-                                <h:commandButton action="#{loginController.login()}" value="Войти" />
-                                <p><h:message for="login" styleClass="error" /></p>
-                            </h:form>
-			</div>
-		
-	</div>
+        </div>
 
-</h:body>
+        <div class ="auth">
+
+
+            <div class = "auth-form-head">
+                <h1>#{msg.enter_to_motoshop}</h1>
+            </div>
+
+
+
+            <div class = "auth-form-body">
+                <h:form>
+                    <label>#{msg.username}</label>
+                    <h:inputText styleClass="form-control-block" id="login" value="#{user.username}" required="true" requiredMessage="#{msg.username_required}" >
+                        <f:validator validatorId="web.validators.LoginValidator" />
+                        <f:ajax event="keyup" execute="@this" render="login_error" />
+                    </h:inputText>
+                    <label>#{msg.password}</label>
+                    <h:inputSecret styleClass="form-control-block" id="password" />
+                    <h:commandButton action="#{loginController.login()}" value="Войти" />
+                    <p><h:message id="login_error" for="login" styleClass="error" /></p>
+                </h:form>
+            </div>
+
+        </div>
+
+    </h:body>
 </html>

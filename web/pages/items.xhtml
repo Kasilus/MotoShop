@@ -23,6 +23,10 @@
             <ui:define name="content_main">
                 #{param.section_id}
                 
+                <ui:repeat value="#{sectionController.categoryList}" var="category">
+                    #{category.name}
+                </ui:repeat>
+                
                 
                 <p>#{msg.items_in_general} : #{searchController.itemsBySearch}</p>
 
