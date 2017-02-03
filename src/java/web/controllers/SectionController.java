@@ -26,6 +26,10 @@ public class SectionController {
         getSections();
     }
     
+        public int getLastSelectedId() {
+        return lastSelectedId;
+    }
+    
     private void getSections() {
         
         sectionList = new ArrayList<>();
