@@ -19,19 +19,21 @@
                     <a href="items.xhtml"><h:graphicImage library="images" name="logo.png" alt="Logo" /></a>
                 </div>
                 <div class="search">			
-                    <h:form>
+                    <h:form id="search_form">
                         <h:inputText value= "#{searchController.searchString}" />
-                        <h:commandButton value="#{msg.search}" action="#{searchController.getByPartOfWord()}" />
+                        <h:commandButton value="#{msg.search}" >
+                            <f:ajax execute="@form" render=":content_main_panel :left_menu_sections" listener="#{searchController.getByPartOfWord()}" />
+                        </h:commandButton>
                     </h:form>
                 </div>
                 <div class="top-info">
                     <h:form>
-                    #{msg.phone}: <span class="phone">+38 (050) 804-00-007</span>
-                    <ul>
-                        <li><a href="#">#{msg.personal_area}</a></li>
-                        <li><a href="#">#{msg.basket}</a></li>
-                        <li><h:commandLink action="#{loginController.exit()}" value="#{msg.exit}" /></li>
-                    </ul>
+                        #{msg.phone}: <span class="phone">+38 (050) 804-00-007</span>
+                        <ul>
+                            <li><a href="#">#{msg.personal_area}</a></li>
+                            <li><a href="#">#{msg.basket}</a></li>
+                            <li><h:commandLink action="#{loginController.exit()}" value="#{msg.exit}" /></li>
+                        </ul>
                     </h:form>
                 </div>		
             </div>

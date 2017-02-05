@@ -45,11 +45,12 @@
 
 
                         <div class ="pager">
-                            <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}">
+                            <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}" id="pager_pages">
 
                                 <ui:repeat value="#{searchController.pagesNumbered}" var="pageNumber">
-                                    <h:commandLink action="#{searchController.selectPage()}" value="#{pageNumber}" styleClass="#{pageNumber == searchController.selectedPageNumber?'selected_page':''}">
+                                    <h:commandLink value="#{pageNumber}" styleClass="#{pageNumber == searchController.selectedPageNumber?'selected_page':''}">
                                         <f:param name="page_number" value="#{pageNumber}" />
+                                        <f:ajax event="click" render=":search_items :pager_pages :search_form" listener="#{searchController.selectPage()}"/>
                                     </h:commandLink>    
                                 </ui:repeat>
 

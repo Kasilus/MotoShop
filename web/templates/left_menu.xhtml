@@ -23,7 +23,7 @@
                             <h:commandLink value="#{section.name}"
                                            styleClass="#{section.id == sectionController.lastSelectedId ? 'section_selected':''}">
                                 <f:param name="section_id" value="#{section.id}" />
-                                <f:ajax event="click" render=":content_main_panel @form" listener="#{sectionController.getCategoriesBySectionId()}" />
+                                <f:ajax event="click" render=":content_main_panel @form :search_form" listener="#{sectionController.getCategoriesBySectionId()}" />
                             </h:commandLink>
                         </ui:repeat>
                     </li>
