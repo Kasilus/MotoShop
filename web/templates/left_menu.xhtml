@@ -16,17 +16,19 @@
 
             <h1>#{msg.sections}.</h1>
             <ul>
-                <ui:repeat value="#{sectionController.sectionList}" var="section">
-                    <h:form id="left_menu_sections">
+
+                <h:form id="left_menu_sections">
                     <li>
-                        <h:commandLink value="#{section.name}"
-                                       action="#{sectionController.getCategoriesBySectionId()}"
-                                       styleClass="#{section.id == sectionController.lastSelectedId ? 'section_selected':''}">
-                            <f:param name="section_id" value="#{section.id}" />
-                        </h:commandLink>
+                        <ui:repeat value="#{sectionController.sectionList}" var="section">
+                            <h:commandLink value="#{section.name}"
+                                           styleClass="#{section.id == sectionController.lastSelectedId ? 'section_selected':''}">
+                                <f:param name="section_id" value="#{section.id}" />
+                                <f:ajax event="click" render=":content_main_panel @form" listener="#{sectionController.getCategoriesBySectionId()}" />
+                            </h:commandLink>
+                        </ui:repeat>
                     </li>
-                    </h:form>    
-                </ui:repeat>
+                </h:form>    
+
             </ul>
 
         </ui:composition>

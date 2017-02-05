@@ -71,7 +71,7 @@ public class SectionController {
     public ArrayList<Category> getCategoryList() {
         return categoryList;
     }
-   // Not finished
+
     public ArrayList<Category> getCategoriesBySectionId(){
         
         SearchController.searchString = "";
