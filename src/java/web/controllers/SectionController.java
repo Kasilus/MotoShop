@@ -20,7 +20,7 @@ public class SectionController {
 
     private ArrayList<Section> sectionList;
     private ArrayList<Category> categoryList;
-    private int lastSelectedId;
+    public static int lastSelectedId;
 
     public SectionController() {
         getSections();
@@ -73,6 +73,8 @@ public class SectionController {
     }
    // Not finished
     public ArrayList<Category> getCategoriesBySectionId(){
+        
+        SearchController.searchString = "";
         
         categoryList = new ArrayList<>();
         

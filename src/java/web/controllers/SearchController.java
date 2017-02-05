@@ -16,7 +16,7 @@ import web.db.Database;
 @SessionScoped
 public class SearchController {
 
-    private String searchString; // String, which contains last search from user
+    public static String searchString = ""; // String, which contains last search from user
     ArrayList<Item> currentItemList; // List with items, which were taken from db by last query
     private String currentSql; // Last query
     private int itemsBySearch; // How many items are relevant to last search (searchString)
@@ -121,6 +121,7 @@ public class SearchController {
      */
     public void getByPartOfWord() {
         selectedPageNumber = 1;
+        SectionController.lastSelectedId = -1;
         fillItemsBySql("SELECT * FROM motoshop.item "
                 + "WHERE name LIKE '%" + searchString + "%'");
     }

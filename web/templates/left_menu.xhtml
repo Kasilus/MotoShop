@@ -19,7 +19,9 @@
                 <ui:repeat value="#{sectionController.sectionList}" var="section">
                     <h:form id="left_menu_sections">
                     <li>
-                        <h:commandLink value="#{section.name}" action="#{sectionController.getCategoriesBySectionId()}" styleClass="#{section.id == sectionController.lastSelectedId ? 'section_selected':''}">
+                        <h:commandLink value="#{section.name}"
+                                       action="#{sectionController.getCategoriesBySectionId()}"
+                                       styleClass="#{section.id == sectionController.lastSelectedId ? 'section_selected':''}">
                             <f:param name="section_id" value="#{section.id}" />
                         </h:commandLink>
                     </li>

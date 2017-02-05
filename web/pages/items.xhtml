@@ -13,49 +13,55 @@
 
     <h:body>
         <ui:composition template="/templates/items_template.xhtml">
-            
+
 
             <ui:define name="title">
                 #{msg.items_title}
             </ui:define>
-            
+
 
             <ui:define name="content_main">
-                #{param.section_id}
-                
-                <ui:repeat value="#{sectionController.categoryList}" var="category">
-                    #{category.name}
-                </ui:repeat>
-                
-                
-                <p>#{msg.items_in_general} : #{searchController.itemsBySearch}</p>
+                <h:panelGroup id="content_main_panel">
+                    
+                    <h:panelGroup id="selected_categories" rendered="#{param.section_id>0}">
+                        #{param.section_id}
 
-                <ui:repeat value="#{searchController.currentItemList}" var="item">
-                    <div class="part-content-cell">
-                        <div class="image">
-                            <h:graphicImage value="/ShowImage?id=#{item.id}" height="136" width="149" />
-                        </div>
-                        <div class="desk"><span class="stock">#{msg.in_stock}</span>#{item.name}</div>
-                    </div>
-                </ui:repeat>
-                
+                        <ui:repeat value="#{sectionController.categoryList}" var="category">
+                            #{category.name}
+                        </ui:repeat>
+                    </h:panelGroup>
 
-                <div class ="pager">
-                    <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}">
+                    <h:panelGroup id="search_items" rendered="#{searchController.searchString!=''}">    
+                        <p>#{msg.items_in_general} : #{searchController.itemsBySearch}</p>
 
-                        <ui:repeat value="#{searchController.pagesNumbered}" var="pageNumber">
-                            <h:commandLink action="#{searchController.selectPage()}" value="#{pageNumber}" styleClass="#{pageNumber == searchController.selectedPageNumber?'selected_page':''}">
-                                <f:param name="page_number" value="#{pageNumber}" />
-                            </h:commandLink>    
+                        <ui:repeat value="#{searchController.currentItemList}" var="item">
+                            <div class="part-content-cell">
+                                <div class="image">
+                                    <h:graphicImage value="/ShowImage?id=#{item.id}" height="136" width="149" />
+                                </div>
+                                <div class="desk"><span class="stock">#{msg.in_stock}</span>#{item.name}</div>
+                            </div>
                         </ui:repeat>
 
-                    </h:form>
-                </div>
 
-                
+                        <div class ="pager">
+                            <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}">
+
+                                <ui:repeat value="#{searchController.pagesNumbered}" var="pageNumber">
+                                    <h:commandLink action="#{searchController.selectPage()}" value="#{pageNumber}" styleClass="#{pageNumber == searchController.selectedPageNumber?'selected_page':''}">
+                                        <f:param name="page_number" value="#{pageNumber}" />
+                                    </h:commandLink>    
+                                </ui:repeat>
+
+                            </h:form>
+                        </div>
+
+                    </h:panelGroup>
+                </h:panelGroup>
+
             </ui:define>
 
-            
+
         </ui:composition>
     </h:body>
 </html>
