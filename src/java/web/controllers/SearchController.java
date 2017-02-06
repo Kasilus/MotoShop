@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -27,11 +29,11 @@ public class SearchController {
     public String getSearchString() {
         return searchString;
     }
-    
+
     public void setSearchString(String searchString) {
         this.searchString = searchString;
     }
-    
+
     public ArrayList<Item> getCurrentItemList() {
         return currentItemList;
     }
@@ -39,7 +41,7 @@ public class SearchController {
     public void setCurrentItemList(ArrayList<Item> currentItemList) {
         this.currentItemList = currentItemList;
     }
-    
+
     public int getItemsBySearch() {
         return itemsBySearch;
     }
@@ -47,8 +49,8 @@ public class SearchController {
     public int getItemsOnPage() {
         return itemsOnPage;
     }
-    
-    public int getSelectedPageNumber(){
+
+    public int getSelectedPageNumber() {
         return selectedPageNumber;
     }
 
@@ -56,7 +58,6 @@ public class SearchController {
         return pagesNumbered;
     }
 
-    
     /*
      * Form new list of items (currentItemList)
      * by the last query. Maintan page by page
@@ -114,7 +115,6 @@ public class SearchController {
         }
     }
 
-    
     /*
      * Form sql query to search items in db
      * by part of word (searchString)
@@ -126,7 +126,6 @@ public class SearchController {
                 + "WHERE name LIKE '%" + searchString + "%'");
     }
 
-    
     /*
      * Count and form list of numbers
      * of pages to maintain page by page
@@ -157,7 +156,7 @@ public class SearchController {
      */
     public byte[] getImage(int id) {
         Statement statement = null;
-        ResultSet rs = null;;
+        ResultSet rs = null;
         Connection conn = null;
 
         byte[] image = null;
@@ -187,5 +186,49 @@ public class SearchController {
             }
         }
         return image;
+    }
+
+    public Item getItemById() {
+
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+         int id  = Integer.parseInt(params.get("item_id"));
+        
+
+        Item item = new Item();
+        item.setId(id);
+
+        Statement statement = null;
+        ResultSet rs = null;;
+        Connection conn = null;
+
+        try {
+            conn = Database.getConnection();
+            statement = conn.createStatement();
+
+            rs = statement.executeQuery("SELECT * FROM motoshop.item WHERE id = " + id);
+
+            item.setName(rs.getString("name"));
+            item.setCount(rs.getInt("count"));
+            item.setPrice(rs.getDouble("price"));
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+
+            }
+
+            return item;
+        }
     }
 }

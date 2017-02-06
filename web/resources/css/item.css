@@ -1,0 +1,10 @@
+@import url("#{resource['css:reset.css']}");
+
+.image{
+    height:350px;
+    width: 430px;
+}
+
+.datatable{
+    height: 500px;
+}

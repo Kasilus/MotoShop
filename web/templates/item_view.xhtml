@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Faces Servlet</title>
+        <h:outputStylesheet library="css" name="item.css" />
+    </h:head>
+
+    <h:body>
+        <ui:composition>
+
+            <h:dataTable id="item_view_table" var="item" value="#{searchController.getItemById()}" columnClasses="image,col2,col3" cellspacing="5px" style="datatable">
+
+                <h:column>
+                    
+                        <h:graphicImage value="/ShowImage?id=#{param.item_id}" height="350" width="430" />
+                        
+                </h:column>
+                
+                <h:column>
+                    <p>#{item.name}</p>
+                    <p>#{item.count}</p>
+                    <p>#{item.price}</p>
+                    <h:graphicImage name="library/top-news.png" />
+                </h:column>
+                
+                <h:column>
+
+                </h:column>
+
+            </h:dataTable>
+        </ui:composition>
+    </h:body>
+
+
+</html>
+

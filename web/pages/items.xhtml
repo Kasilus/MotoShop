@@ -22,7 +22,7 @@
 
             <ui:define name="content_main">
                 <h:panelGroup id="content_main_panel">
-                    
+
                     <h:panelGroup id="selected_categories" rendered="#{param.section_id>0}">
                         #{param.section_id}
 
@@ -39,7 +39,17 @@
                                 <div class="image">
                                     <h:graphicImage value="/ShowImage?id=#{item.id}" height="136" width="149" />
                                 </div>
-                                <div class="desk"><span class="stock">#{msg.in_stock}</span>#{item.name}</div>
+                                <div class="desk">
+                                    <span class="stock">
+                                        #{msg.in_stock}
+                                    </span>
+                                    <h:form>
+                                        <h:link outcome="item" >
+                                            #{item.name}
+                                            <f:param name="item_id" value="#{item.id}" />
+                                        </h:link>
+                                    </h:form>
+                                </div>
                             </div>
                         </ui:repeat>
 
