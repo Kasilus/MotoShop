@@ -316,3 +316,10 @@ footer p{
     color:white;
 }
 
+.languages{
+    margin-bottom: 10px;
+}
+
+.languages a{
+    margin-right: 5px;
+}

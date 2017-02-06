@@ -27,6 +27,19 @@
                     <h:graphicImage library="images" name="sponsor-logo-4.png" />
                 </div>
             </div>
+
+            <div class="languages">
+                <h:form>
+                    <h:commandLink action="#{localeChanger.changeLocale('ru')}">
+                        <h:graphicImage name="images/rus.png" />
+                    </h:commandLink>
+
+                    <h:commandLink action="#{localeChanger.changeLocale('en')}">
+                        <h:graphicImage name="images/eng.png" />
+                    </h:commandLink>
+                </h:form>
+            </div>
+
             <p>#{msg.copyright} 2014 &copy; #{msg.lion}. #{msg.all_rights_reserved}.</p>
             <div class="low-foot">
                 <ul>
