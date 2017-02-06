@@ -22,7 +22,7 @@
                     <h:form id="search_form">
                         <h:inputText value= "#{searchController.searchString}" />
                         <h:commandButton value="#{msg.search}" >
-                            <f:ajax execute="@form" render=":content_main_panel :left_menu_sections" listener="#{searchController.getByPartOfWord()}" />
+                            <f:ajax execute="@form" render=":content_main_panel :left_menu_sections :pager_pages" listener="#{searchController.getByPartOfWord()}" />
                         </h:commandButton>
                     </h:form>
                 </div>
