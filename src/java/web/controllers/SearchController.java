@@ -186,49 +186,5 @@ public class SearchController {
             }
         }
         return image;
-    }
-
-    public Item getItemById() {
-
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-         int id  = Integer.parseInt(params.get("item_id"));
-        
-
-        Item item = new Item();
-        item.setId(id);
-
-        Statement statement = null;
-        ResultSet rs = null;;
-        Connection conn = null;
-
-        try {
-            conn = Database.getConnection();
-            statement = conn.createStatement();
-
-            rs = statement.executeQuery("SELECT * FROM motoshop.item WHERE id = " + id);
-
-            item.setName(rs.getString("name"));
-            item.setCount(rs.getInt("count"));
-            item.setPrice(rs.getDouble("price"));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-
-            }
-
-            return item;
-        }
-    }
+    } 
 }

@@ -4,7 +4,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Faces Servlet</title>
@@ -14,26 +15,47 @@
     <h:body>
         <ui:composition>
 
-            <h:dataTable id="item_view_table" var="item" value="#{searchController.getItemById()}" columnClasses="image,col2,col3" cellspacing="5px" style="datatable">
+            <h:form id="itemForm">
+                <h:dataTable id="item_view_table" var="item" value="#{itemController.itemById}" columnClasses="image,col2,col3" cellspacing="5px" style="datatable">
 
-                <h:column>
-                    
-                        <h:graphicImage value="/ShowImage?id=#{param.item_id}" height="350" width="430" />
+                    <h:column>
+
+                        <h:graphicImage value="/ShowImage?id=#{itemController.idOfSelectedItem}" height="350" width="430" />
+
+                    </h:column>
+
+                    <h:column>
+                        <p>
+                            <h:outputText value = "#{item.name}" rendered="#{!itemController.edit}" />
+                            <h:inputText value="#{item.name}" rendered="#{itemController.edit}" />
+                        </p>
+
+                        <p>
+                            <h:outputText value = "#{item.count}" rendered="#{!itemController.edit}" />
+                            <h:inputText value="#{item.count}" rendered="#{itemController.edit}" />
+                        </p>
+
+                        <p>
+                            <h:outputText value = "#{item.price}" rendered="#{!itemController.edit}" />
+                            <h:inputText value="#{item.price}" rendered="#{itemController.edit}" />
+                        </p>
+
+                    </h:column>
+
+                    <h:column>
+                        <h:commandLink action="#{itemController.changeMode()}" rendered="#{!itemController.edit}">
+                            <h:outputText value="#{msg.edit}" />
+                            <f:ajax render="@form" execute="@form" />
+                        </h:commandLink>
                         
-                </h:column>
-                
-                <h:column>
-                    <p>#{item.name}</p>
-                    <p>#{item.count}</p>
-                    <p>#{item.price}</p>
-                    <h:graphicImage name="library/top-news.png" />
-                </h:column>
-                
-                <h:column>
+                        <h:commandButton action="#{itemController.updateItem()}" rendered="#{itemController.edit}" value="#{msg.update}" />
+                        
+                        <h:commandButton immediate="true" action="#{itemController.changeMode()}" rendered="#{itemController.edit}" value="#{msg.cancel}" />
+                        
+                    </h:column>
 
-                </h:column>
-
-            </h:dataTable>
+                </h:dataTable>
+            </h:form>
         </ui:composition>
     </h:body>
 
