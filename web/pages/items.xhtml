@@ -34,25 +34,26 @@
                     <h:panelGroup id="search_items" rendered="#{searchController.searchString!=''}">    
                         <p>#{msg.items_in_general} : #{searchController.itemsBySearch}</p>
 
-                        <ui:repeat value="#{searchController.currentItemList}" var="item">
-                            <div class="part-content-cell">
-                                <div class="image">
-                                    <h:graphicImage value="/ShowImage?id=#{item.id}" height="136" width="149" />
+                        <div class="part-content-cells">
+                            <ui:repeat value="#{searchController.currentItemList}" var="item">
+                                <div class="part-content-cell">
+                                    <div class="image">
+                                        <h:graphicImage value="/ShowImage?id=#{item.id}" height="136" width="149" />
+                                    </div>
+                                    <div class="desk">
+                                        <span class="stock">
+                                            #{msg.in_stock}
+                                        </span>
+                                        <h:form>
+                                            <h:link outcome="item" >
+                                                #{item.name}
+                                                <f:param name="item_id" value="#{item.id}" />
+                                            </h:link>
+                                        </h:form>
+                                    </div>
                                 </div>
-                                <div class="desk">
-                                    <span class="stock">
-                                        #{msg.in_stock}
-                                    </span>
-                                    <h:form>
-                                        <h:link outcome="item" >
-                                            #{item.name}
-                                            <f:param name="item_id" value="#{item.id}" />
-                                        </h:link>
-                                    </h:form>
-                                </div>
-                            </div>
-                        </ui:repeat>
-
+                            </ui:repeat>
+                        </div>
 
                         <div class ="pager">
                             <h:form rendered="#{searchController.itemsBySearch>searchController.itemsOnPage}" id="pager_pages">

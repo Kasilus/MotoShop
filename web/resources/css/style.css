@@ -157,6 +157,10 @@ div.search{
     margin-left:30px;
 }
 
+.part-content-cells{
+    overflow: auto;
+}
+
 .desk {
     padding:8px 5px 0;
     font-size:14px;
@@ -309,6 +313,7 @@ footer p{
 
 .pager .selected_page{
     color: red;
+    clear:left;
 }
 
 .main-nav .section_selected{
