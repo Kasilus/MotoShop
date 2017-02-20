@@ -25,7 +25,7 @@ public class ItemController {
     public int getIdOfSelectedItem() {
         return idOfSelectedItem;
     }
-    
+
     public boolean isEdit() {
         return editMode;
     }
@@ -35,13 +35,11 @@ public class ItemController {
     }
 
     public Item getItemById() {
-       
-            Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-            
-            if(params.get("item_id")!=null){
-            idOfSelectedItem = Integer.parseInt(params.get("item_id"));
-        }
 
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+        if (params.get("item_id") != null) {
+            idOfSelectedItem = Integer.parseInt(params.get("item_id"));
 
             int id = idOfSelectedItem;
 
@@ -79,7 +77,8 @@ public class ItemController {
                 } catch (SQLException ex) {
 
                 }
-            
+            }
+
         }
 
         return lastItemById;
@@ -94,11 +93,14 @@ public class ItemController {
         try {
 
             conn = Database.getConnection();
-            preStatement = conn.prepareStatement("UPDATE motoshop.item SET name = ?, count = ?, price = ? WHERE id = " + idOfSelectedItem );
+            preStatement = conn.prepareStatement("UPDATE motoshop.item SET name = ?, count = ?, price = ? WHERE id = " + idOfSelectedItem);
 
             System.out.println(lastItemById.getName());
             preStatement.setString(1, lastItemById.getName());
+            System.out.println(lastItemById.getCount());
             preStatement.setInt(2, lastItemById.getCount());
+            System.out.println(lastItemById.getCount());
+            System.out.println(lastItemById.getPrice());
             preStatement.setDouble(3, lastItemById.getPrice());
 
             preStatement.addBatch();
@@ -121,7 +123,7 @@ public class ItemController {
             } catch (SQLException ex) {
 
             }
-            
+
             changeMode();
 
         }
