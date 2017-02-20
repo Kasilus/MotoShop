@@ -33,13 +33,14 @@
                 <h:form>
                     <label>#{msg.username}</label>
                     <h:inputText styleClass="form-control-block" id="login" value="#{user.username}" required="true" requiredMessage="#{msg.username_required}" >
-                        <f:validator validatorId="web.validators.LoginValidator" />
-                        <f:ajax event="keyup" execute="@this" render="login_error" />
+<!--                    <f:validator validatorId="web.validators.LoginValidator" />
+                        <f:ajax event="keyup" execute="@this" render="login_error" />-->
                     </h:inputText>
                     <label>#{msg.password}</label>
-                    <h:inputSecret styleClass="form-control-block" id="password" />
-                    <h:commandButton action="#{loginController.login()}" value="Войти" />
-                    <p><h:message id="login_error" for="login" styleClass="error" /></p>
+                    <h:inputSecret styleClass="form-control-block" id="password" value="#{user.password}" required="true" redisplay="true" requiredMessage="#{msg.password_required}" />
+                    <h:commandButton action="#{user.login()}" value="Войти" />
+                    
+                    <p><h:message id="login_error" for="login_form" styleClass="error" /></p>
                 </h:form>
             </div>
 
