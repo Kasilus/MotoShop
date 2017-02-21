@@ -4,8 +4,8 @@
     <Scope Scope="Project">
         <Node id="templates/content_low.xhtml" x="711" y="196" zoom="true"/>
         <Node id="templates/content_new.xhtml" x="716" y="106" zoom="true"/>
-        <Node id="templates/content_main.xhtml" x="712" y="168" zoom="true"/>
         <Node id="index.xhtml" x="227" y="75" zoom="false"/>
+        <Node id="templates/content_main.xhtml" x="712" y="168" zoom="true"/>
         <Node id="templates/left_menu.xhtml" x="714" y="138" zoom="true"/>
         <Node id="templates/items_template.xhtml" x="720" y="4" zoom="true"/>
         <Node id="templates/content_spec_offers.xhtml" x="711" y="225" zoom="true"/>

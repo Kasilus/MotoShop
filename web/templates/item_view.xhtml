@@ -43,17 +43,18 @@
                     </h:column>
 
                     <h:column>
-                        <h:commandLink action="#{itemController.changeMode()}" rendered="#{!itemController.edit}">
-                            <h:outputText value="#{msg.edit}" />
-                            <f:ajax render="@form" execute="@form" />
-                        </h:commandLink>
-                        
-                        <h:commandButton action="#{itemController.updateItem()}" rendered="#{itemController.edit}" value="#{msg.update}">
-                            
-                        </h:commandButton>
-                        
-                        <h:commandButton immediate="true" action="#{itemController.changeMode()}" rendered="#{itemController.edit}" value="#{msg.cancel}" />
-                        
+                        <h:panelGroup id="admin_tools" rendered="#{request.isUserInRole('ADMIN')}">
+                            <h:commandLink action="#{itemController.changeMode()}" rendered="#{!itemController.edit}">
+                                <h:outputText value="#{msg.edit}" />
+                                <f:ajax render="@form" execute="@form" />
+                            </h:commandLink>
+
+                            <h:commandButton action="#{itemController.updateItem()}" rendered="#{itemController.edit}" value="#{msg.update}">
+
+                            </h:commandButton>
+
+                            <h:commandButton immediate="true" action="#{itemController.changeMode()}" rendered="#{itemController.edit}" value="#{msg.cancel}" />
+                        </h:panelGroup>
                     </h:column>
 
                 </h:dataTable>
